@@ -7,10 +7,12 @@ description: Record academic papers in FlowUs and create evidence-backed, reader
 
 将论文可靠地录入 FlowUs，并在对应页面生成以“让我能看懂”为目标的结构化学习笔记。
 
-## 选择可用工具
+## 选择和连接 FlowUs
 
-- 优先使用当前环境提供的 FlowUs 连接器或专用工具；没有连接器时，再使用可用的 FlowUs CLI 或 API。
-- 不依赖固定的 Agent、编辑器或工具名称。先检查所选工具的认证状态、写入权限和目标数据库。
+- 当前环境支持 Agent Skills 时，优先使用 FlowUs 官方 `$flowus-cli` Skill；仅支持 MCP 或不希望安装本地程序时，再使用 FlowUs MCP。两种方式都支持时优先 Skill，以减少对话上下文占用。
+- 第一次连接、`$flowus-cli` 尚未安装或认证失败时，先完整阅读 [FlowUs Skill 连接与使用](references/flowus-skill.md)，按其中步骤安装并授权；必须通过 `flowus --json whoami` 验证预期的身份或工作区后，才能执行 FlowUs 读取或写入。
+- 连接成功后，通过 `$flowus-cli` 执行数据库查询、页面读写、文件上传和写入后的回读验证；不要绕过 Skill 自行猜测 CLI 参数。
+- 不依赖固定的 Agent 或编辑器。先检查所选工具的认证状态、写入权限和目标数据库。
 - 若当前环境没有 FlowUs 写入能力，仍可整理待写入的元数据和笔记，但必须明确报告未写入，不能声称任务已完成。
 - 执行写入前检查重复记录；优先按 arXiv ID、DOI、规范化标题和论文链接匹配。除非用户明确要求，否则更新已有记录，不创建重复记录。
 
